@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎄 Christmas Gift Raffle 🎁</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Snow Container -->
+    <div id="snow-container"></div>
+    
+    <!-- Main Content -->
+    <div class="container">
+        <div id="start-screen" class="screen active">
+            <h1 class="christmas-title">🎄 Christmas Gift Raffle 🎄</h1>
+            <p class="subtitle">Click anywhere to begin the magic!</p>
+            <div class="ornament-decoration">✨🎁✨</div>
+        </div>
+
+        <div id="animation-screen" class="screen">
+            <h2 class="animation-title">🎅 Drawing Winners... 🎅</h2>
+            <div class="slot-machine">
+                <div class="slot-item" id="slot1"></div>
+                <div class="slot-item" id="slot2"></div>
+                <div class="slot-item" id="slot3"></div>
+            </div>
+            <p class="loading-text">Ho Ho Ho...</p>
+        </div>
+
+        <div id="results-screen" class="screen">
+            <h2 class="results-title">🎁 Gift Assignments 🎁</h2>
+            <div id="results-container"></div>
+            <button id="restart-btn" class="restart-btn">🔄 Shuffle Again</button>
+        </div>
+    </div>
+
+    <!-- Include confetti library from CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
+
