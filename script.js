@@ -109,14 +109,14 @@ function celebrate() {
             angle: 60,
             spread: 55,
             origin: { x: 0 },
-            colors: ['#ff0000', '#00ff00', '#ffd700', '#ffffff']
+            colors: ['#87ceeb', '#b0e0e6', '#e0f7ff', '#ffffff', '#4a90e2']
         });
         confetti({
             particleCount: 3,
             angle: 120,
             spread: 55,
             origin: { x: 1 },
-            colors: ['#ff0000', '#00ff00', '#ffd700', '#ffffff']
+            colors: ['#87ceeb', '#b0e0e6', '#e0f7ff', '#ffffff', '#4a90e2']
         });
 
         if (Date.now() < end) {
@@ -152,7 +152,8 @@ function showResults() {
             confetti({
                 particleCount: 20,
                 spread: 50,
-                origin: { y: 0.6 }
+                origin: { y: 0.6 },
+                colors: ['#87ceeb', '#b0e0e6', '#e0f7ff', '#ffffff', '#4a90e2']
             });
         }, index * 200);
     });
@@ -185,9 +186,9 @@ document.addEventListener('keydown', (e) => {
             particleCount: 200,
             spread: 180,
             origin: { y: 0.5 },
-            colors: ['#ff0000', '#00ff00', '#0000ff', '#ffd700']
+            colors: ['#87ceeb', '#b0e0e6', '#e0f7ff', '#ffffff', '#4a90e2']
         });
-        alert('🎄 Ho Ho Ho! You found the secret code! 🎅');
+        alert('❄️ You found the secret code! ❄️');
         konamiCode = [];
     }
 });
@@ -206,7 +207,8 @@ document.getElementById('snow-container').addEventListener('click', (e) => {
             confetti({
                 particleCount: 100,
                 spread: 70,
-                origin: { x: e.clientX / window.innerWidth, y: e.clientY / window.innerHeight }
+                origin: { x: e.clientX / window.innerWidth, y: e.clientY / window.innerHeight },
+                colors: ['#87ceeb', '#b0e0e6', '#e0f7ff', '#ffffff', '#4a90e2']
             });
             snowClickCount = 0;
         }
@@ -230,11 +232,5 @@ document.addEventListener('DOMContentLoaded', async () => {
     
     // Add click handler to body for start screen
     document.body.addEventListener('click', handleClick);
-    
-    // Add restart button handler
-    document.getElementById('restart-btn').addEventListener('click', (e) => {
-        e.stopPropagation();
-        restartRaffle();
-    });
 });
 
