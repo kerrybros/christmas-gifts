@@ -44,13 +44,12 @@ body {
 .container {
     position: relative;
     z-index: 10;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 40px;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    max-width: 100vw;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
 }
 
 /* Screens */
@@ -59,10 +58,18 @@ body {
     text-align: center;
     width: 100%;
     animation: fadeIn 0.5s ease-in;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
 }
 
 .screen.active {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 @keyframes fadeIn {
@@ -71,6 +78,10 @@ body {
 }
 
 /* Start Screen */
+#start-screen {
+    padding: 40px;
+}
+
 .christmas-title {
     font-size: 5rem;
     color: #e8f4f8;
@@ -103,11 +114,59 @@ body {
     margin-top: 30px;
 }
 
-/* Company Logo */
-.company-logo {
-    max-width: 300px;
-    max-height: 150px;
+/* Generate Button */
+.generate-btn {
+    margin-top: 30px;
+    padding: 20px 50px;
+    font-size: 1.8rem;
+    font-weight: bold;
+    background: linear-gradient(135deg, #87ceeb 0%, #4a90e2 100%);
+    border: 3px solid #e8f4f8;
+    border-radius: 50px;
+    color: #fff;
+    cursor: pointer;
+    box-shadow: 0 0 30px rgba(135, 206, 250, 0.6),
+                0 8px 20px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    animation: buttonGlow 2s ease-in-out infinite;
+}
+
+.generate-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 50px rgba(135, 206, 250, 1),
+                0 12px 30px rgba(0, 0, 0, 0.4);
+    background: linear-gradient(135deg, #4a90e2 0%, #357abd 100%);
+}
+
+.generate-btn:active {
+    transform: scale(1.05);
+}
+
+@keyframes buttonGlow {
+    0%, 100% { 
+        box-shadow: 0 0 30px rgba(135, 206, 250, 0.6),
+                    0 8px 20px rgba(0, 0, 0, 0.3);
+    }
+    50% { 
+        box-shadow: 0 0 50px rgba(135, 206, 250, 0.9),
+                    0 8px 20px rgba(0, 0, 0, 0.3);
+    }
+}
+
+/* Company Logos */
+.logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
     margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.company-logo {
+    max-width: 400px;
+    max-height: 250px;
     filter: drop-shadow(0 0 20px rgba(135, 206, 250, 0.6));
     animation: logoGlow 3s ease-in-out infinite;
 }
@@ -118,6 +177,10 @@ body {
 }
 
 /* Animation Screen */
+#animation-screen {
+    padding: 40px;
+}
+
 .animation-title {
     font-size: 3rem;
     color: #e8f4f8;
@@ -173,9 +236,10 @@ body {
 
 /* Results Screen */
 .results-title {
-    font-size: 3.5rem;
+    font-size: 2rem;
     color: #e8f4f8;
-    margin-bottom: 40px;
+    margin-bottom: 10px;
+    margin-top: 10px;
     text-shadow: 0 0 20px rgba(135, 206, 250, 0.9),
                  0 0 40px rgba(176, 224, 230, 0.6),
                  0 2px 4px rgba(0, 0, 0, 0.3);
@@ -185,20 +249,23 @@ body {
     background: rgba(255, 255, 255, 0.15);
     backdrop-filter: blur(10px);
     border: 2px solid #87ceeb;
-    border-radius: 20px;
-    padding: 40px;
-    max-height: 70vh;
-    overflow-y: auto;
+    border-radius: 15px;
+    padding: 10px 15px;
     box-shadow: 0 0 30px rgba(135, 206, 250, 0.4),
                 0 0 60px rgba(176, 224, 230, 0.2);
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 6px;
+    width: 96vw;
+    max-width: 96vw;
+    margin: 0 auto;
 }
 
 .result-item {
     background: linear-gradient(135deg, #4a90e2 0%, #357abd 100%);
     border: 2px solid rgba(135, 206, 250, 0.3);
-    border-radius: 15px;
-    padding: 25px;
-    margin: 15px 0;
+    border-radius: 6px;
+    padding: 6px 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -206,6 +273,7 @@ body {
                 0 0 20px rgba(135, 206, 250, 0.2);
     animation: slideIn 0.5s ease-out backwards;
     transition: transform 0.3s ease;
+    min-height: 35px;
 }
 
 .result-item:hover {
@@ -224,21 +292,26 @@ body {
 }
 
 .result-name {
-    font-size: 1.8rem;
+    font-size: 0.8rem;
     font-weight: bold;
     color: #fff;
+    flex-shrink: 0;
 }
 
 .result-gift {
-    font-size: 1.5rem;
+    font-size: 0.75rem;
     color: #e8f4f8;
     text-align: right;
     text-shadow: 0 0 10px rgba(176, 224, 230, 0.6);
+    flex-shrink: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .result-arrow {
-    font-size: 2rem;
-    margin: 0 20px;
+    font-size: 0.9rem;
+    margin: 0 5px;
+    flex-shrink: 0;
 }
 
 /* Restart Button - Hidden */
@@ -246,26 +319,40 @@ body {
     display: none;
 }
 
-/* Scrollbar Styling */
-#results-container::-webkit-scrollbar {
-    width: 10px;
-}
+/* No scrollbar needed - everything fits on one screen */
 
-#results-container::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
-}
-
-#results-container::-webkit-scrollbar-thumb {
-    background: #87ceeb;
-    border-radius: 10px;
-}
-
-#results-container::-webkit-scrollbar-thumb:hover {
-    background: #b0e0e6;
+/* Results Screen */
+#results-screen {
+    padding: 10px 5px;
+    overflow: hidden;
 }
 
 /* Responsive Design */
+@media (max-width: 1800px) {
+    #results-container {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (max-width: 1400px) {
+    #results-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 1200px) {
+    #results-container {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    #results-container {
+        grid-template-columns: 1fr;
+        font-size: 0.7rem;
+    }
+}
+
 @media (max-width: 768px) {
     .christmas-title {
         font-size: 3rem;
@@ -281,14 +368,8 @@ body {
         font-size: 1.5rem;
     }
     
-    .result-item {
-        flex-direction: column;
-        text-align: center;
-    }
-    
-    .result-arrow {
-        transform: rotate(90deg);
-        margin: 10px 0;
+    #results-container {
+        grid-template-columns: 1fr;
     }
 }
 

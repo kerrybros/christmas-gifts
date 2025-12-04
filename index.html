@@ -15,9 +15,13 @@
     <!-- Main Content -->
     <div class="container">
         <div id="start-screen" class="screen active">
-            <img src="/logo.png" alt="Logo" class="company-logo">
+            <div class="logo-container">
+                <img src="/logo.png" alt="Logo" class="company-logo">
+                <img src="/bass.png" alt="Bass" class="company-logo">
+            </div>
             <h1 class="christmas-title">❄️ Holiday Gift Celebration ❄️</h1>
-            <p class="subtitle">Click anywhere to begin!</p>
+            <p class="subtitle">Ready to reveal the gift assignments?</p>
+            <button id="generate-btn" class="generate-btn">Generate Winners</button>
             <div class="ornament-decoration">✨🎁✨</div>
         </div>
 
@@ -32,8 +36,7 @@
         </div>
 
         <div id="results-screen" class="screen">
-            <img src="/logo.png" alt="Logo" class="company-logo">
-            <h2 class="results-title">🎁 Gift Assignments 🎁</h2>
+            <h2 class="results-title">🎁 Gift Results 🎁</h2>
             <div id="results-container"></div>
         </div>
     </div>

@@ -125,6 +125,16 @@ function celebrate() {
     }());
 }
 
+// Shuffle array for random display order
+function shuffleArray(array) {
+    const shuffled = [...array];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    return shuffled;
+}
+
 // Display results
 function showResults() {
     switchScreen('results');
@@ -133,8 +143,11 @@ function showResults() {
     const resultsContainer = document.getElementById('results-container');
     resultsContainer.innerHTML = '';
     
-    // Shuffle for visual effect (but use predetermined order from CSV)
-    raffleData.forEach((result, index) => {
+    // Shuffle the display order so it doesn't look alphabetical
+    const shuffledResults = shuffleArray(raffleData);
+    
+    // Display all results in shuffled order
+    shuffledResults.forEach((result, index) => {
         setTimeout(() => {
             const resultItem = document.createElement('div');
             resultItem.className = 'result-item';
@@ -143,7 +156,7 @@ function showResults() {
             resultItem.innerHTML = `
                 <div class="result-name">🎁 ${result.name}</div>
                 <div class="result-arrow">➜</div>
-                <div class="result-gift">${result.gift} ✨</div>
+                <div class="result-gift">${result.gift}</div>
             `;
             
             resultsContainer.appendChild(resultItem);
@@ -159,8 +172,9 @@ function showResults() {
     });
 }
 
-// Click handler for start screen
-function handleClick() {
+// Click handler for generate button
+function handleGenerateClick(e) {
+    e.stopPropagation();
     if (currentScreen === 'start') {
         switchScreen('animation');
         animateSlotMachine();
@@ -230,7 +244,10 @@ document.addEventListener('DOMContentLoaded', async () => {
         alert('Error loading gifts.csv. Using sample data for demo.');
     }
     
-    // Add click handler to body for start screen
-    document.body.addEventListener('click', handleClick);
+    // Add click handler to generate button
+    const generateBtn = document.getElementById('generate-btn');
+    if (generateBtn) {
+        generateBtn.addEventListener('click', handleGenerateClick);
+    }
 });
 
