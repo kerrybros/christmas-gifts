@@ -23,7 +23,7 @@ function createSnow() {
 // Load CSV data
 async function loadCSV() {
     try {
-        const response = await fetch('gifts.csv');
+        const response = await fetch('/gifts.csv');
         const text = await response.text();
         
         // Parse CSV

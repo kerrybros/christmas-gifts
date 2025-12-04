@@ -25,11 +25,22 @@ Sarah Johnson,Gift Card $50
 **Important:** The results are predetermined based on your CSV order. The animation is just for show!
 
 ### 2. Run the Raffle
-1. Open `index.html` in any web browser
+
+**Option A: Use Live Vercel Deployment (Recommended)**
+1. Just open your Vercel URL in any browser
 2. Project it on a screen at your party
-3. Click anywhere on the screen to start the animation
-4. Watch the slot machine effect, then results appear with confetti!
-5. Click "🔄 Shuffle Again" to restart (it will show the same predetermined results)
+3. Click anywhere to start the animation!
+
+**Option B: Run Locally**
+1. Run `node server.js` from the Christmas Gifts folder
+2. Open `http://localhost:3000` in your browser
+3. Or simply open `index.html` directly in any browser
+
+**During the Party:**
+1. Project the page on a screen
+2. Click anywhere on the screen to start the animation
+3. Watch the slot machine effect, then results appear with confetti!
+4. Click "🔄 Shuffle Again" to restart (shows same predetermined results)
 
 ## Easter Eggs 🥚
 
