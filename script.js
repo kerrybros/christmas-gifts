@@ -233,6 +233,28 @@ document.getElementById('snow-container').addEventListener('click', (e) => {
     }
 });
 
+// Download CSV function
+function downloadCSV() {
+    // Create CSV content from the raffle data
+    let csvContent = "Name,Gift\n";
+    raffleData.forEach(row => {
+        csvContent += `${row.name},${row.gift}\n`;
+    });
+    
+    // Create blob and download
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const link = document.createElement('a');
+    const url = URL.createObjectURL(blob);
+    
+    link.setAttribute('href', url);
+    link.setAttribute('download', 'gift_results.csv');
+    link.style.visibility = 'hidden';
+    
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+}
+
 // Initialize app
 document.addEventListener('DOMContentLoaded', async () => {
     createSnow();
@@ -248,6 +270,15 @@ document.addEventListener('DOMContentLoaded', async () => {
     const generateBtn = document.getElementById('generate-btn');
     if (generateBtn) {
         generateBtn.addEventListener('click', handleGenerateClick);
+    }
+    
+    // Add click handler to download button
+    const downloadBtn = document.getElementById('download-btn');
+    if (downloadBtn) {
+        downloadBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            downloadCSV();
+        });
     }
 });
 
